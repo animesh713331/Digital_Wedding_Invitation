@@ -110,3 +110,34 @@ const countdownInterval = setInterval(() => {
     if (minsEl) minsEl.innerText = minutes.toString().padStart(2, '0');
     if (secsEl) secsEl.innerText = seconds.toString().padStart(2, '0');
 }, 1000);
+
+// Swipe and Keyboard Event Listeners
+let touchStartX = 0;
+let touchEndX = 0;
+
+function handleGesture() {
+    // Requires a minimum swipe distance to avoid accidental flips
+    if (touchEndX < touchStartX - 50) {
+        nextPage(); // Swiped left -> Next page
+    }
+    if (touchEndX > touchStartX + 50) {
+        prevPage(); // Swiped right -> Previous page
+    }
+}
+
+document.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+}, { passive: true });
+
+document.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleGesture();
+}, { passive: true });
+
+document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') {
+        nextPage();
+    } else if (e.key === 'ArrowLeft') {
+        prevPage();
+    }
+});

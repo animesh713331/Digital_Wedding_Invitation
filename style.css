@@ -25,7 +25,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 2rem;
+    padding: 2rem 40px; /* Safe padding for mobile borders */
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
@@ -389,11 +389,11 @@ body {
 .side-border {
     position: fixed;
     top: 0;
-    width: 60px;
+    width: 30px; /* Thinner on mobile */
     height: 100vh;
     background-image: url('border.png');
     background-repeat: repeat-y;
-    background-size: 60px auto;
+    background-size: 30px auto;
     z-index: 10;
     animation: scrollBorder 15s linear infinite;
     pointer-events: none;
@@ -412,4 +412,16 @@ body {
 @keyframes scrollBorder {
     from { background-position: 0 0; }
     to { background-position: 0 1000px; }
+}
+
+/* Responsive Breakpoints */
+@media (min-width: 768px) {
+    .page {
+        padding: 2rem 80px; /* Extra padding for thicker desktop borders */
+    }
+    
+    .side-border {
+        width: 60px; /* Full thickness on desktop */
+        background-size: 60px auto;
+    }
 }
