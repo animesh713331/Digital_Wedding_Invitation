@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>रौशन संग निशा - विवाह निमंत्रण</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Montserrat:wght@300;500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Tailwind for Layout -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Animated Side Borders -->
+    <div class="side-border side-left"></div>
+    <div class="side-border side-right"></div>
+
+    <!-- Wedding Card Envelope / Doors -->
+    <div id="envelope-wrapper">
+        <div class="door door-left"></div>
+        <div class="door door-right"></div>
+        <div id="door-lock" onclick="openCard()">
+            <img src="https://png.pngtree.com/png-vector/20240728/ourmid/pngtree-significance-of-the-lord-ganesha-icon-in-hindu-culture-png-image_13234213.png" alt="Ganesh" class="lock-icon glow">
+            <p class="hindi-text gold-text text-3xl mt-4">शुभ विवाह</p>
+            <p class="pulse-text text-sm mt-8 tracking-widest uppercase font-bold">Tap to Open</p>
+        </div>
+    </div>
+
+
+
+    <div class="flower-overlay"></div>
+
+    <!-- Maithili-inspired Side Decorations -->
+    <div class="side-decoration left"></div>
+    <div class="side-decoration right"></div>
+
+    <!-- Maithili Painting Watermark -->
+    <div class="watermark"></div>
+
+    <div id="book-container">
+    <!-- Page 1: Cover Page -->
+    <section class="page bg-black" id="cover">
+        <img src="https://png.pngtree.com/png-vector/20240728/ourmid/pngtree-significance-of-the-lord-ganesha-icon-in-hindu-culture-png-image_13234213.png" alt="Lord Ganesh" class="ganesh-icon fade-in float" loading="lazy">
+        <h2 class="hindi-text text-2xl gold-text fade-in" style="animation-delay: 0.5s;">श्री गणेशाय नमः।</h2>
+        <div class="my-10 fade-in" style="animation-delay: 1s;">
+            <h1 class="hindi-text text-4xl sm:text-6xl md:text-8xl mb-4">रौशन <span class="text-3xl block md:inline gold-text">संग</span> निशा</h1>
+        </div>
+        <p class="text-xl tracking-widest fade-in" style="animation-delay: 1.5s;">13 / 05 / 2026</p>
+        
+        <!-- Countdown Timer -->
+        <div id="countdown" class="flex space-x-2 md:space-x-4 mt-8 fade-in" style="animation-delay: 2s;">
+            <div class="countdown-item"><div id="days" class="text-2xl md:text-3xl gold-text font-bold">00</div><div class="text-xs uppercase tracking-wider">Days</div></div>
+            <div class="countdown-item"><div id="hours" class="text-2xl md:text-3xl gold-text font-bold">00</div><div class="text-xs uppercase tracking-wider">Hrs</div></div>
+            <div class="countdown-item"><div id="mins" class="text-2xl md:text-3xl gold-text font-bold">00</div><div class="text-xs uppercase tracking-wider">Mins</div></div>
+            <div class="countdown-item"><div id="secs" class="text-2xl md:text-3xl gold-text font-bold">00</div><div class="text-xs uppercase tracking-wider">Secs</div></div>
+        </div>
+
+    </section>
+
+    <!-- Page 2: Wedding Program -->
+    <section class="page" style="background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80');">
+        <h2 class="hindi-text text-4xl gold-text mb-10">मंगल कार्यक्रम</h2>
+        <div class="glass-card text-left space-y-6">
+            <div class="border-l-4 border-yellow-600 pl-4">
+                <p class="gold-text font-bold">10/05/2026</p>
+                <p class="hindi-text text-lg">सत्यनारायण भगवान पूजन, घृतधारी मटकोर एवं बाबा भुईयां नौतन</p>
+            </div>
+            <div class="border-l-4 border-yellow-600 pl-4">
+                <p class="gold-text font-bold">11/05/2026</p>
+                <p class="hindi-text text-lg">बाबा भुइयां पूजन एवं संध्या में प्रीतिभोज</p>
+            </div>
+            <div class="border-l-4 border-yellow-600 pl-4">
+                <p class="gold-text font-bold">13/05/2026</p>
+                <p class="hindi-text text-lg font-bold text-red-400">बारात प्रस्थान एवं रात्रि के मंगल बेला में शुभ विवाह</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 3: Venue Details -->
+    <section class="page bg-gradient-to-br from-red-900 to-black">
+        <h2 class="hindi-text text-4xl gold-text mb-10 fade-in" style="animation-delay: 0.5s;">स्थान एवं समय</h2>
+        <div class="glass-card fade-in" style="animation-delay: 1s;">
+            <div class="space-y-4">
+                <div class="text-center">
+                    <p class="hindi-text text-2xl gold-text fade-in" style="animation-delay: 1.5s;">शुभ विवाह समारोह</p>
+                    <p class="text-lg fade-in" style="animation-delay: 2s;">ग्राम रोहुआ, बिहार</p>
+                    <p class="text-sm opacity-80 fade-in" style="animation-delay: 2.5s;">समय: सायंकाल 7:00 बजे से</p>
+                </div>
+                <div class="border-t border-yellow-600/30 pt-4 fade-in" style="animation-delay: 3s;">
+                    <p class="hindi-text text-lg italic mb-4">"बिहार की धरती पर, पारंपरिक रीति-रिवाजों के साथ, आपका स्वागत है।"</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Rohua+Bihar" target="_blank" class="inline-block bg-yellow-600/20 border border-yellow-600 px-6 py-2 rounded-full text-sm hover:bg-yellow-600 hover:text-black transition duration-300">
+                        📍 दिशा-निर्देश (Get Directions)
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="page" style="background-color: #0a0a0a; background-image: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('RaushanNisha.jpeg'); background-size: cover, contain; background-repeat: no-repeat; background-position: center;">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl">
+            <!-- Groom -->
+            <div class="profile-frame bg-black/40 slide-in-left">
+                <h3 class="gold-text text-xl mb-2">वर पक्ष</h3>
+                <h2 class="hindi-text text-4xl mb-4">चि० रौशन कुमार</h2>
+                <div class="text-sm space-y-1 opacity-90">
+                    <p><strong>सुपुत्र:</strong> डॉ चंद्रभुषण राय</p>
+                    <p><strong>सुपौत्र:</strong> अशर्फी राय (सेवानिवृत्त शिक्षक)</p>
+                    <p><strong>निवास:</strong> ग्राम रोहुआ</p>
+                </div>
+            </div>
+            <!-- Bride -->
+            <div class="profile-frame bg-black/40 slide-in-right">
+                <h3 class="gold-text text-xl mb-2">वधू पक्ष</h3>
+                <h2 class="hindi-text text-4xl mb-4">आयु० निशा कुमारी</h2>
+                <div class="text-sm space-y-1 opacity-90">
+                    <p><strong>सुपुत्री:</strong> नवीन राय</p>
+                    <p><strong>निवास:</strong> ग्राम गोरीगगमा</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 4: Bal Agrah -->
+    <section class="page" style="background: radial-gradient(circle, #200 0%, #000 100%);">
+        <div class="glass-card relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-yellow-600/20 rounded-full blur-3xl"></div>
+            <h2 class="gold-text text-2xl mb-6">बाल आग्रह</h2>
+            <p class="hindi-text text-3xl leading-relaxed italic">
+                "ना कोई फोन ना कोई बहाना होगा,<br>
+                मेरे चाचू की शादी में जरूर से जरूर आना होगा।"
+            </p>
+            <div class="mt-8 pt-6 border-t border-yellow-600/30">
+                <p class="text-lg">रितिक, अंशु, अश्विनी</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 5: Traditional Blessings -->
+    <section class="page bg-gradient-to-t from-black to-red-900">
+        <h2 class="hindi-text text-4xl gold-text mb-10 fade-in" style="animation-delay: 0.5s;">आशीर्वाद</h2>
+        <div class="glass-card fade-in" style="animation-delay: 1s;">
+            <p class="hindi-text text-xl leading-relaxed mb-6 fade-in" style="animation-delay: 1.5s;">
+                "सदा खुश रहो, सदा मुस्कुराओ,<br>
+                जीवन की हर मोड़ पर साथ बनकर चलो।<br>
+                बिहार की धरती की मिट्टी जैसी मजबूत हो तुम्हारी दोस्ती,<br>
+                और गंगा की धारा जैसा शुद्ध हो तुम्हारा प्रेम।"
+            </p>
+            <p class="text-lg gold-text fade-in" style="animation-delay: 2s;">परिवार के सदस्यों की ओर से</p>
+        </div>
+    </section>
+    <!-- Page 6: Cinematic Finale with Image -->
+    <section class="page bg-black">
+        <h2 class="gold-text text-3xl mb-6 hindi-text fade-in" style="animation-delay: 0.5s;">परिणय उत्सव की मंगल बेला में आपका हार्दिक स्वागत है।</h2>
+        
+        <!-- Provided Image -->
+        <div class="relative flex flex-col items-center fade-in" style="animation-delay: 1s;">
+          <img src="RaushanNisha.jpeg" 
+     alt="Raushan and Nisha" 
+     class="couple-image glow" 
+     loading="lazy"
+     onerror="this.onerror=null; this.src='https://drive.google.com/uc?export=view&id=1u805DCnGMEhbCLwddlmM-ZYuRgWcrFQ2';">
+
+
+            <div class="absolute -bottom-2 bg-yellow-600 text-black px-4 py-1 rounded-full font-bold text-xs fade-in" style="animation-delay: 1.5s;">
+                रौशन & निशा
+            </div>
+        </div>
+
+        <div class="mt-10 text-center space-y-4 fade-in" style="animation-delay: 2s;">
+            <p class="hindi-text text-2xl">आपका आगमन हमारे लिए हर्ष का विषय होगा।</p>
+            <!--<p class="text-sm opacity-60">Venue & Location details will be shared soon.</p>-->
+
+        </div>
+        
+        <footer class="mt-12 text-[10px] opacity-40 uppercase tracking-tighter fade-in" style="animation-delay: 2.5s;">
+            Digital Invitation | Crafted for the Union of Raushan & Nisha | Crafted by: Er. Pushpanshu | Best wishes
+        </footer>
+    </section>
+    </div>
+
+    <div id="page-controls" class="fixed bottom-4 left-0 w-full flex justify-between px-8 z-[9000] pointer-events-none opacity-0 transition-opacity duration-1000">
+        <button onclick="prevPage()" id="prev-btn" class="bg-yellow-600/60 backdrop-blur-sm border border-yellow-600 text-white rounded-full p-3 pointer-events-auto hover:bg-yellow-600 transition hidden shadow-[0_0_15px_rgba(212,175,55,0.5)]">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        </button>
+        <button onclick="nextPage()" id="next-btn" class="bg-yellow-600/60 backdrop-blur-sm border border-yellow-600 text-white rounded-full p-3 pointer-events-auto hover:bg-yellow-600 transition shadow-[0_0_15px_rgba(212,175,55,0.5)] animate-pulse">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

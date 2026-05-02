@@ -1,0 +1,415 @@
+:root {
+    --royal-gold: #D4AF37;
+    --deep-red: #8B0000;
+    --cream: #FFFDD0;
+}
+
+body {
+    background-color: #050505;
+    color: var(--cream);
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    margin: 0;
+}
+
+.hindi-text { font-family: 'Kalam', cursive; }
+
+.page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    transform-origin: left center;
+    transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1), opacity 1s;
+    backface-visibility: hidden;
+    z-index: 1;
+}
+
+.page.flipped {
+    transform: rotateY(-180deg);
+    opacity: 0;
+    pointer-events: none;
+}
+
+#book-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    perspective: 2000px;
+    z-index: 5;
+}
+
+.gold-text {
+    color: var(--royal-gold);
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+.glass-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-radius: 15px;
+    padding: 2.5rem;
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.5), 
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        inset 0 0 20px rgba(212, 175, 55, 0.05);
+    max-width: 500px;
+    width: 100%;
+    margin: 15px auto;
+    z-index: 1;
+}
+
+.glass-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 15px; 
+    padding: 12px; /* Border thickness */
+    background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Maithili_Painting_of_Krishna.jpg/320px-Maithili_Painting_of_Krishna.jpg') repeat;
+    background-size: 150px; /* Scale of the pattern */
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: -1;
+    opacity: 0.9;
+}
+
+
+
+/* Animations */
+.fade-in { opacity: 0; }
+.fade-in.active { animation: fadeIn 1.5s ease-out forwards; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-in-left { opacity: 0; }
+.slide-in-left.active { animation: slideInLeft 1.5s ease-out forwards; }
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.slide-in-right { opacity: 0; }
+.slide-in-right.active { animation: slideInRight 1.5s ease-out forwards; }
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Envelope / Doors Animation */
+#envelope-wrapper {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 9999;
+    display: flex;
+    perspective: 1500px;
+    background: transparent;
+    pointer-events: auto;
+}
+
+#envelope-wrapper.open {
+    pointer-events: none;
+}
+
+.door {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    background: #1a0505;
+    transition: transform 1.5s cubic-bezier(0.77, 0, 0.175, 1);
+    z-index: 9999;
+    overflow: hidden;
+    border-image: url('border.png') 30 round;
+    border-width: 40px;
+    border-style: solid;
+    border-color: rgba(212, 175, 55, 0.4);
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.8);
+}
+
+.door::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('https://www.transparenttextures.com/patterns/black-paper.png');
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.door-left {
+    transform-origin: left;
+    border-right-width: 5px;
+}
+
+.door-right {
+    transform-origin: right;
+    border-left-width: 5px;
+}
+
+#envelope-wrapper.open .door-left {
+    transform: rotateY(-110deg);
+}
+
+#envelope-wrapper.open .door-right {
+    transform: rotateY(110deg);
+}
+
+#door-lock {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10000;
+    text-align: center;
+    cursor: pointer;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+#envelope-wrapper.open #door-lock {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.5);
+    pointer-events: none;
+}
+
+.lock-icon {
+    width: 140px;
+    margin: 0 auto;
+    filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.9));
+}
+
+.pulse-text {
+    animation: pulse 1.5s infinite;
+    color: var(--royal-gold);
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.5; transform: scale(0.95); }
+    50% { opacity: 1; transform: scale(1.05); }
+}
+
+
+
+/* Countdown */
+.countdown-item {
+    background: rgba(139, 0, 0, 0.2); border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 10px; padding: 10px; min-width: 70px;
+    backdrop-filter: blur(5px);
+}
+
+.float {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.glow {
+    animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 20px var(--royal-gold); }
+    50% { box-shadow: 0 0 30px var(--royal-gold), 0 0 40px var(--royal-gold); }
+}
+
+.bouncing-arrow {
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-10px);}
+    60% {transform: translateY(-5px);}
+}
+
+.flower-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    background-image: url('https://www.transparenttextures.com/patterns/black-paper.png');
+    opacity: 0.3;
+    animation: twinkle 5s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.5; }
+}
+
+.ganesh-icon {
+    width: 100px;
+    filter: drop-shadow(0 0 10px gold);
+    margin-bottom: 1rem;
+}
+
+.profile-frame {
+    border: 4px double var(--royal-gold);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+}
+
+/* Image Display */
+.couple-image {
+    max-height: 60vh;
+    max-width: 100%;
+    width: auto;
+    border-radius: 15px;
+    border: 3px solid var(--royal-gold);
+    box-shadow: 0 0 20px var(--royal-gold);
+    margin-bottom: 1.5rem;
+    object-fit: contain;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .page {
+        padding: 1rem;
+    }
+    .glass-card {
+        max-width: 90%;
+        padding: 1rem;
+    }
+    .ganesh-icon {
+        width: 80px;
+    }
+    .couple-image {
+        max-width: 250px;
+    }
+    .watermark {
+        display: none;
+    }
+}
+
+/* Maithili-inspired Side Decorations */
+.side-decoration {
+    position: fixed;
+    top: 0;
+    width: 150px;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.left {
+    left: 0;
+    background: linear-gradient(to right, rgba(212,175,55,0.05), transparent);
+}
+
+.right {
+    right: 0;
+    background: linear-gradient(to left, rgba(212,175,55,0.05), transparent);
+}
+
+.left::before,
+.left::after,
+.right::before,
+.right::after {
+    content: '';
+    position: absolute;
+    background: var(--royal-gold);
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: floatMaithili 8s ease-in-out infinite;
+}
+
+.left::before {
+    width: 40px;
+    height: 40px;
+    top: 30%;
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.left::after {
+    width: 60px;
+    height: 60px;
+    top: 60%;
+    left: 10%;
+    animation-delay: 2s;
+}
+
+.right::before {
+    width: 50px;
+    height: 50px;
+    top: 40%;
+    right: 15%;
+    animation-delay: 1s;
+}
+
+.right::after {
+    width: 35px;
+    height: 35px;
+    top: 70%;
+    right: 25%;
+    animation-delay: 3s;
+}
+
+@keyframes floatMaithili {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-30px) scale(1.1); }
+}
+
+/* Maithili Painting Watermark */
+.watermark {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 150px;
+    height: 150px;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Maithili_Painting_of_Krishna.jpg/320px-Maithili_Painting_of_Krishna.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+/* Animated Side Borders */
+.side-border {
+    position: fixed;
+    top: 0;
+    width: 60px;
+    height: 100vh;
+    background-image: url('border.png');
+    background-repeat: repeat-y;
+    background-size: 60px auto;
+    z-index: 10;
+    animation: scrollBorder 15s linear infinite;
+    pointer-events: none;
+}
+
+.side-left {
+    left: 0;
+    border-right: 2px solid var(--royal-gold);
+}
+
+.side-right {
+    right: 0;
+    border-left: 2px solid var(--royal-gold);
+}
+
+@keyframes scrollBorder {
+    from { background-position: 0 0; }
+    to { background-position: 0 1000px; }
+}
