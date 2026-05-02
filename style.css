@@ -44,7 +44,8 @@ body {
 #book-container {
     position: relative;
     width: 100vw;
-    height: 100vh;
+    height: 100vh; /* Fallback for older browsers */
+    height: 100dvh;
     perspective: 2000px;
     z-index: 5;
 }
@@ -292,6 +293,7 @@ body {
     }
     .couple-image {
         max-width: 250px;
+        max-height: 45vh;
     }
     .watermark {
         display: none;
@@ -391,6 +393,7 @@ body {
     top: 0;
     width: 30px; /* Thinner on mobile */
     height: 100vh;
+    height: 100dvh;
     background-image: url('border.png');
     background-repeat: repeat-y;
     background-size: 30px auto;
